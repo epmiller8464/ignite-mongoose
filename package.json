@@ -1,0 +1,33 @@
+{
+  "name": "@ghostmacmiller/ignite-mongoose",
+  "version": "0.0.1",
+  "description": "Mongoose for Ingite AI",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "author": "epmiller8464@gmail.com",
+  "repository": {
+    "type": "git",
+    "license": "ISC",
+    "url": "git+https://github.com/epmiller8464/ignite-mongoose.git"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.7",
+    "mongoose": "^4.8.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-es2015": "^6.18.0",
+    "bluebird": "^3.4.7",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-config-standard-jsx": "^3.2.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.9.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "standard": "^8.6.0",
+    "tape": "^4.6.3"
+  },
+  "license": "ISC"
+}
