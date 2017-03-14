@@ -7,12 +7,12 @@ module.exports = function () {
   var GroupSchema = new mongoose.Schema({
     title: { type: String },
     blocks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'block', required: true }],
-    built_in: { type: Boolean }
+    built_in: { type: Boolean, required: true, default: false }
   }, { _id: false });
 
   var PageInfo = new mongoose.Schema({
     id: { type: String, required: true },
-    title: { type: String },
+    title: { type: String, required: true },
     picture: { type: String },
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: false },
     bot_id: { type: String }
@@ -30,9 +30,9 @@ module.exports = function () {
 
   var BotSchema = new mongoose.Schema({
     id: { type: String },
-    title: { type: String },
+    title: { type: String, required: true },
     date_added: { type: Number, default: Date.now() },
-    timezone_offset: { type: String },
+    timezone_offset: { type: Number },
     timezone_name: { type: String },
     default_group_id: { type: String },
     default_block: { type: String },
