@@ -70,8 +70,7 @@ module.exports = function () {
     // name of plugin i.e. text, gallery, ai,json_plugin, go_to_plugin, etc
     plugin_id: {
       type: String,
-      required: true,
-      enum: ['quick_reply', 'text', 'gallery', 'ai', 'go_to', 'image', 'video', 'audio']
+      required: true
     },
     is_valid: { type: Boolean, required: true, default: true },
     // is determined by the plugin_id which each have a unique config type: Object
@@ -86,7 +85,7 @@ module.exports = function () {
     builtin: { type: Boolean, required: true, default: false },
     cards: [CardSchema],
     referral_active: { type: Boolean, required: true, default: false },
-    is_valid: { type: Boolean, required: true, default: false }
+    is_valid: { type: Boolean, required: true, default: true }
   });
 
   var Model = void 0;

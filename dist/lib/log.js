@@ -4,10 +4,11 @@ var mongoose = require('mongoose');
 
 module.exports = function () {
   var LogSchema = new mongoose.Schema({
+    entity_id: { type: mongoose.Schema.Types.ObjectId, required: true },
+    entity_type: { type: String, required: true },
     subject: { type: String },
     entry: { type: String },
-    createdAt: { type: Number, required: true, default: Date.now() },
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true }
+    created_at: { type: Number, required: true, default: Date.now() }
   });
   var Model = void 0;
   try {
