@@ -74,9 +74,9 @@ module.exports = function () {
     },
     is_valid: { type: Boolean, required: true, default: true },
     // is determined by the plugin_id which each have a unique config type: Object
-    config: { type: Object, required: true },
+    payload: { type: Object, required: true },
     localization: { type: Object, required: false }
-  }, { _id: false, id: false });
+  });
 
   var BlockSchema = new mongoose.Schema({
     title: { type: String, required: true },
@@ -86,7 +86,6 @@ module.exports = function () {
     cards: [CardSchema],
     referral_active: { type: Boolean, required: true, default: false },
     is_valid: { type: Boolean, required: true, default: false }
-
   }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });
 
   var Model = void 0;
