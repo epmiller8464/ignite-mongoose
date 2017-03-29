@@ -1,6 +1,6 @@
 {
   "name": "@ghostmacmiller/ignite-mongoose",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "description": "Mongoose for Ingite AI",
   "main": "index.js",
   "scripts": {

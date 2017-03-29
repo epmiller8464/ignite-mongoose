@@ -4,6 +4,7 @@ const models = {
   UserModel: require('./lib/user')(),
   BotModel: require('./lib/bot')(),
   BlockModel: require('./lib/block')(),
+  LogModel: require('./lib/log')(),
   TokenModel: require('./lib/token')()
 }
 

@@ -76,17 +76,18 @@ module.exports = function () {
     // is determined by the plugin_id which each have a unique config type: Object
     config: { type: Object, required: true },
     localization: { type: Object, required: false }
-  });
+  }, { _id: false, id: false });
 
   var BlockSchema = new mongoose.Schema({
     title: { type: String, required: true },
     bot_id: { type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: true },
-    parent_group: { type: String, required: false },
+    group_id: { type: mongoose.Schema.Types.ObjectId, refPath: 'bots.default_group_id', required: false },
     builtin: { type: Boolean, required: true, default: false },
     cards: [CardSchema],
     referral_active: { type: Boolean, required: true, default: false },
-    is_valid: { type: Boolean, required: true, default: true }
-  });
+    is_valid: { type: Boolean, required: true, default: false }
+
+  }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });
 
   var Model = void 0;
   try {
