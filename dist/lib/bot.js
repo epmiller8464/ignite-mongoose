@@ -38,7 +38,10 @@ module.exports = function () {
     default_group_id: { type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false },
     groups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false }],
     is_valid: { type: Boolean, required: true, default: false }
-  }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });
+  }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }, { collection: 'bot' });
+
+  BotSchema.index({ title: 1, description: 1 });
+  BotSchema.index({ admins: 1 });
 
   var Model = void 0;
   try {

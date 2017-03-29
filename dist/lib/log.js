@@ -9,7 +9,7 @@ module.exports = function () {
     subject: { type: String },
     entry: { type: String },
     created_at: { type: Number, required: true, default: Date.now() }
-  });
+  }, { collection: 'log' });
   var Model = void 0;
   try {
     // Throws an error if "Name" hasn't been registered

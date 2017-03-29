@@ -64,11 +64,11 @@ module.exports = function () {
     is_valid: Boolean
   });
 
-  var CardSchema = new mongoose.Schema({
+  var ComponentSchema = new mongoose.Schema({
     // "id": "58927d59e4b099e9389e51f5",
     // "plugin_id": "ai",
     // name of plugin i.e. text, gallery, ai,json_plugin, go_to_plugin, etc
-    plugin_id: {
+    component_type: {
       type: String,
       required: true
     },
@@ -80,13 +80,16 @@ module.exports = function () {
 
   var BlockSchema = new mongoose.Schema({
     title: { type: String, required: true },
-    bot_id: { type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: true },
+    bot_id: { type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: false },
     group_id: { type: mongoose.Schema.Types.ObjectId, refPath: 'bots.default_group_id', required: false },
     builtin: { type: Boolean, required: true, default: false },
-    cards: [CardSchema],
+    components: [ComponentSchema],
     referral_active: { type: Boolean, required: true, default: false },
     is_valid: { type: Boolean, required: true, default: false }
-  }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });
+  }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }, { collection: 'block' });
+
+  BlockSchema.index({ bot_id: 1 });
+  BlockSchema.index({ title: 1 });
 
   var Model = void 0;
   try {
