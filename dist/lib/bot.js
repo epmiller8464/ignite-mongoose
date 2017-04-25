@@ -30,6 +30,7 @@ module.exports = function () {
     default_block: { type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false },
     starting_block: { type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false },
     help_block: { type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false },
+    menu_block: { type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false },
     ai_block: { type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false },
     blocks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false }],
     description: { type: String, require: true },

@@ -1,6 +1,6 @@
 {
   "name": "@ghostmacmiller/ignite-mongoose",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Mongoose for Ingite AI",
   "main": "index.js",
   "scripts": {
@@ -14,8 +14,6 @@
   },
   "dependencies": {
     "bluebird": "^3.4.7",
-    "chancejs": "0.0.8",
-    "faker": "^4.1.0",
     "mongoose": "^4.8.1"
   },
   "devDependencies": {
