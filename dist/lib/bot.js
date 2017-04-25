@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 module.exports = function () {
 
-  var PageInfo = new mongoose.Schema({
+  var PageInfoSchema = new mongoose.Schema({
     page_id: { type: String, required: true },
     title: { type: String, required: true },
     picture: { type: String },
@@ -18,7 +18,7 @@ module.exports = function () {
       type: String, required: true, enum: ['draft', 'connected', 'disabled'], default: 'draft'
     },
     page: { type: String },
-    page_info: { type: PageInfo },
+    page_info: { type: PageInfoSchema },
     payments_status: { type: String }
   });
 

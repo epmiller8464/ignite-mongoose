@@ -3,11 +3,10 @@
 var mongoose = require('mongoose');
 
 module.exports = function () {
-
   var GroupSchema = new mongoose.Schema({
     title: { type: String, required: true },
     blocks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'block', required: true }],
-    bot_id: [{ type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: true }],
+    bot_id: { type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: true },
     built_in: { type: Boolean, required: true, default: false }
   }, { collection: 'group' });
 

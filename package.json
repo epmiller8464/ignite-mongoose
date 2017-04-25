@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "bluebird": "^3.4.7",
+    "chancejs": "0.0.8",
+    "faker": "^4.1.0",
     "mongoose": "^4.8.1"
   },
   "devDependencies": {
@@ -26,6 +28,8 @@
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-react": "^6.9.0",
     "eslint-plugin-standard": "^2.0.1",
+    "fakegoose": "0.0.2",
+    "faker": "^4.1.0",
     "standard": "^8.6.0",
     "tape": "^4.6.3"
   },
