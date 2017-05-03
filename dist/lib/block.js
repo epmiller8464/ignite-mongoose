@@ -3,66 +3,6 @@
 var mongoose = require('mongoose');
 
 module.exports = function () {
-  var textConfig = {
-    text: String,
-    buttons: [{
-      title: String,
-      block_id: [{ type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false }]
-    }]
-  };
-
-  var gotoConfig = {
-    text: String,
-    action: {
-      random: Boolean,
-      items: [{
-        item_type: String,
-        block_id: [{ type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false }]
-
-      }]
-    }
-  };
-
-  var jsonConfig = {
-    url: String,
-    method: String,
-    user_attributes: [String],
-    show_error_messages: Boolean
-  };
-
-  var galleryConfig = new mongoose.Schema({
-    gallery_card: {
-      title: String,
-      item_url: String,
-      image_url: String,
-      buttons: [Object]
-    }
-  });
-
-  var elementConfig = new mongoose.Schema({
-    title: { type: String, required: true },
-    subtitle: String,
-    image_url: String,
-    default_action: Object,
-    buttons: [Object]
-  });
-
-  var xCardSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    builtin: { type: Boolean, required: true, default: true },
-    image_aspect_ratio: String,
-    elements: [elementConfig],
-    // name of plugin i.e. text, gallery, ai,json_plugin, go_to_plugin, etc
-    template_type: {
-      type: String,
-      required: true,
-      enum: ['image', 'video', 'audio', 'file', 'template'],
-      default: 'draft'
-    },
-    // is determined by the type which each have a unique config type: Object
-    payload: Object,
-    is_valid: Boolean
-  });
 
   var ComponentSchema = new mongoose.Schema({
     // "id": "58927d59e4b099e9389e51f5",
@@ -72,7 +12,7 @@ module.exports = function () {
       type: String,
       required: true
     },
-    is_valid: { type: Boolean, required: true, default: true },
+    is_valid: { type: Boolean, required: true, default: false },
     // is determined by the plugin_id which each have a unique config type: Object
     payload: { type: Object, required: true },
     localization: { type: Object, required: false }
@@ -80,7 +20,7 @@ module.exports = function () {
 
   var BlockSchema = new mongoose.Schema({
     title: { type: String, required: true },
-    bot_id: { type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: false },
+    bot_id: { type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: true },
     group_id: { type: mongoose.Schema.Types.ObjectId, refPath: 'bots.default_group_id', required: false },
     builtin: { type: Boolean, required: true, default: false },
     components: [ComponentSchema],

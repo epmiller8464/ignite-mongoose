@@ -6,6 +6,7 @@ var models = {
   BlockModel: require('./lib/block')(),
   GroupModel: require('./lib/group')(),
   LogModel: require('./lib/log')(),
+  EventModel: require('./lib/event')(),
   TokenModel: require('./lib/token')()
 };
 

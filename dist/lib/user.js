@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var moment = require('moment')();
 
 module.exports = function () {
 
@@ -9,7 +10,7 @@ module.exports = function () {
   var UserSchema = new mongoose.Schema({
     name: { type: String },
     displayName: { type: String },
-    date_added: { type: Number, require: true, default: Date.now() },
+    date_added: { type: Number, required: true, default: moment.valueOf() },
     profile_url: { type: String },
     email: {
       type: String, trim: true, lowercase: true, required: false, minLength: 1, match: /.+\@.+\..+/
@@ -18,6 +19,7 @@ module.exports = function () {
     refreshToken: { type: String },
     email_verified: { type: Boolean },
     provider_id: { type: String },
+    auth_id: { type: String },
     provider: { type: String },
     profile: { type: Object },
     flags: [String],
@@ -26,8 +28,9 @@ module.exports = function () {
     pages_access: { type: Boolean, required: true, default: false },
     subscriptions_access: { type: Boolean, required: true, default: false },
     payments_access: { type: Boolean, required: true, default: false },
-    bot_subscriptions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: false }]
-
+    bot_subscriptions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: false }],
+    ip: [String],
+    history: [Object]
   }, { collection: 'user' });
   UserSchema.index({ name: 1 });
   UserSchema.index({ email: 1 });
