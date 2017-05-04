@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var moment = require('moment')();
 
 module.exports = function () {
 
@@ -24,9 +25,9 @@ module.exports = function () {
 
   var BotSchema = new mongoose.Schema({
     title: { type: String, required: true },
-    date_added: { type: Number, default: Date.now(), required: true },
-    timezone_offset: { type: Number },
-    timezone_name: { type: String },
+    // date_added: {type: Number, default: , required: true},
+    date_added: { type: Number, required: true, default: moment.valueOf() },
+    timezone: { offset: { type: Number }, name: { type: String } },
     default_block: { type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false },
     starting_block: { type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false },
     help_block: { type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false },

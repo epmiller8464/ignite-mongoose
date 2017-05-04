@@ -21,11 +21,12 @@ module.exports = function () {
   var BlockSchema = new mongoose.Schema({
     title: { type: String, required: true },
     bot_id: { type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: true },
-    group_id: { type: mongoose.Schema.Types.ObjectId, refPath: 'bots.default_group_id', required: false },
+    group_id: { type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false },
     builtin: { type: Boolean, required: true, default: false },
     components: [ComponentSchema],
     referral_active: { type: Boolean, required: true, default: false },
-    is_valid: { type: Boolean, required: true, default: false }
+    is_valid: { type: Boolean, required: true, default: false },
+    history: [Object]
   }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }, { collection: 'block' });
 
   BlockSchema.index({ bot_id: 1 });

@@ -1,14 +1,15 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var moment = require('moment')();
 
 module.exports = function () {
   var Model = void 0;
 
   var tokenSchema = new mongoose.Schema({
     token: { type: String, required: true },
-    issued_on: { type: Number, require: true, default: Date.now() },
-    jwtid: { type: String, required: true },
+    issued_on: { type: Number, required: true, default: moment.valueOf() },
+    jwt_id: { type: String, required: true },
     blackListed: { type: Boolean, required: true, default: false },
     revoked: { type: Boolean, required: true, default: false },
     type: { type: String, required: true, enum: ['verification', 'refresh', 'access'] }

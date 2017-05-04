@@ -31,7 +31,8 @@ module.exports = function () {
     bot_subscriptions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: false }],
     ip: [String],
     history: [Object]
-  }, { collection: 'user' });
+  }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }, { collection: 'user' });
+
   UserSchema.index({ name: 1 });
   UserSchema.index({ email: 1 });
   UserSchema.index({ provider_id: 1 });
