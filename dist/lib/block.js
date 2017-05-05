@@ -16,7 +16,7 @@ module.exports = function () {
     // is determined by the plugin_id which each have a unique config type: Object
     payload: { type: Object, required: true },
     localization: { type: Object, required: false }
-  });
+  }, { _id: false });
 
   var BlockSchema = new mongoose.Schema({
     title: { type: String, required: true },
