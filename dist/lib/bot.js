@@ -10,8 +10,9 @@ module.exports = function () {
     title: { type: String, required: true },
     picture: { type: String },
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: false },
-    bot_id: { type: String }
-  });
+    bot_id: { type: String },
+    access_token: { type: String }
+  }, { _id: false });
 
   var StatusSchema = new mongoose.Schema({
     read_only: { type: Boolean, required: true, default: false },
@@ -21,7 +22,7 @@ module.exports = function () {
     page: { type: String },
     page_info: { type: PageInfoSchema },
     payments_status: { type: String }
-  });
+  }, { _id: false });
 
   var BotSchema = new mongoose.Schema({
     title: { type: String, required: true },
