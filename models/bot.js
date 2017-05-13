@@ -10,8 +10,8 @@ module.exports = function () {
     picture: {type: String},
     owner: {type: mongoose.Schema.Types.ObjectId, ref: 'user', required: false},
     bot_id: {type: String},
-    access_token:{type: String}
-  }, { _id: false })
+    access_token: {type: String}
+  }, {_id: false})
 
   let StatusSchema = new mongoose.Schema({
     read_only: {type: Boolean, required: true, default: false},
@@ -21,13 +21,12 @@ module.exports = function () {
     page: {type: String},
     page_info: {type: PageInfoSchema},
     payments_status: {type: String}
-  }, { _id: false })
+  }, {_id: false})
 
   let BotSchema = new mongoose.Schema({
     title: {type: String, required: true},
-    // date_added: {type: Number, default: , required: true},
     date_added: {type: Number, required: true, default: moment.valueOf()},
-    timezone: {offset: {type: Number}, name: {type: String}},
+    timezone: {offset: {type: String}, name: {type: String}},
     default_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
     starting_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
     help_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
@@ -36,7 +35,8 @@ module.exports = function () {
     blocks: [{type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false}],
     description: {type: String, require: true},
     status: {type: StatusSchema, required: false},
-    admins: [{type: mongoose.Schema.Types.ObjectId, ref: 'user', required: false}],
+    admins: [{type: mongoose.Schema.Types.ObjectId, ref: 'users', required: false}],
+    created_by: {type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true},
     default_group_id: {type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false},
     groups: [{type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false}],
     is_valid: {type: Boolean, required: true, default: false},
