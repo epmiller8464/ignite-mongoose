@@ -40,7 +40,7 @@ module.exports = function () {
     default_group_id: {type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false},
     groups: [{type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false}],
     is_valid: {type: Boolean, required: true, default: false},
-    history: [Object]
+    history: [mongoose.Schema.Types.Object]
   }, {timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'}}, {collection: 'bot'})
 
   BotSchema.index({title: 1, description: 1})

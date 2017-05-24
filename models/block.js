@@ -25,7 +25,7 @@ module.exports = function () {
     components: [ComponentSchema],
     referral_active: {type: Boolean, required: true, default: false},
     is_valid: {type: Boolean, required: true, default: false},
-    history: [Object]
+    history: [mongoose.Schema.Types.Object]
   }, {timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'}}, {collection: 'block'})
 
   BlockSchema.index({bot_id: 1})

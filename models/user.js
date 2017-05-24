@@ -29,7 +29,7 @@ module.exports = function () {
     payments_access: {type: Boolean, required: true, default: false},
     bot_subscriptions: [{type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: false}],
     ip: [String],
-    history: [Object]
+    history: [mongoose.Schema.Types.Object]
   }, {timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'}}, {collection: 'user'})
 
   UserSchema.index({name: 1})
