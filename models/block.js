@@ -13,12 +13,13 @@ module.exports = function () {
     },
     is_valid: {type: Boolean, required: true, default: false},
     // is determined by the plugin_id which each have a unique config type: Object
-    payload: {type: Object, required: true},
-    localization: {type: Object, required: false}
-  }, { _id: false })
+    payload: {type: mongoose.Schema.Types.Object, required: true},
+    localization: {type: mongoose.Schema.Types.Object, required: false}
+  })
+  // type: String, trim: true, lowercase: true, required: false, minLength: 1, match: /.+\@.+\..+/
 
   let BlockSchema = new mongoose.Schema({
-    title: {type: String, required: true},
+    title: {type: String, require: true, maxLength: 80, minLength: 1},
     bot_id: {type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: true},
     group_id: {type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false},
     builtin: {type: Boolean, required: true, default: false},
@@ -28,7 +29,7 @@ module.exports = function () {
     history: [mongoose.Schema.Types.Object]
   }, {timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'}}, {collection: 'block'})
 
-  BlockSchema.index({bot_id: 1})
+  BlockSchema.index({bot_id: 1, group_id: 1})
   BlockSchema.index({title: 1})
 
   let Model

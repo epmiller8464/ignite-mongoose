@@ -4,8 +4,8 @@ let moment = require('moment')()
 module.exports = function () {
   let EventSchema = new mongoose.Schema({
     name: {type: String, required: true},
-    data: {type: Object},
-    context: {type: Object},
+    data: {type: mongoose.Schema.Types.Object},
+    context: {type: mongoose.Schema.Types.Object},
     // context: {
     //   type: {
     //     target_id: {type: mongoose.Schema.Types.ObjectId},

@@ -24,23 +24,27 @@ module.exports = function () {
   }, {_id: false})
 
   let BotSchema = new mongoose.Schema({
-    title: {type: String, required: true},
+    title: {type: String, require: true, maxLength: 80, minLength: 1},
     date_added: {type: Number, required: true, default: moment.valueOf()},
     timezone: {offset: {type: String}, name: {type: String}},
     default_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
+    default_group_id: {type: mongoose.Schema.Types.ObjectId, ref: 'group', required: true},
     starting_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
     help_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
-    menu_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
+    setting_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
     ai_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
-    blocks: [{type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false}],
-    description: {type: String, require: true},
+    // blocks: [{type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false}],
+    description: {
+      type: String, require: true, maxLength: 640, minLength: 1
+      // type: String, trim: true, lowercase: true, required: false, minLength: 1, match: /.+\@.+\..+/
+    },
     status: {type: StatusSchema, required: false},
     admins: [{type: mongoose.Schema.Types.ObjectId, ref: 'users', required: false}],
     created_by: {type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true},
-    default_group_id: {type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false},
     groups: [{type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false}],
     is_valid: {type: Boolean, required: true, default: false},
-    history: [mongoose.Schema.Types.Object]
+    history: [mongoose.Schema.Types.Object],
+    tags: [String]
   }, {timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'}}, {collection: 'bot'})
 
   BotSchema.index({title: 1, description: 1})

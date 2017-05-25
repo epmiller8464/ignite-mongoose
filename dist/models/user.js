@@ -21,7 +21,7 @@ module.exports = function () {
     provider_id: { type: String },
     auth_id: { type: String },
     provider: { type: String },
-    profile: { type: Object },
+    profile: { type: mongoose.Schema.Types.Object },
     flags: [String],
     picture_url: { type: String },
     has_connected_bots: { type: Boolean, required: true, default: false },
