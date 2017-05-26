@@ -22,13 +22,18 @@ module.exports = function () {
     page_info: {type: PageInfoSchema},
     payments_status: {type: String}
   }, {_id: false})
+  let GroupSchema = new mongoose.Schema({
+    title: {type: String, required: true},
+    built_in: {type: Boolean, required: true, default: false},
+    blocks:[{type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false}]
+  })
 
   let BotSchema = new mongoose.Schema({
     title: {type: String, require: true, maxLength: 80, minLength: 1},
     date_added: {type: Number, required: true, default: moment.valueOf()},
     timezone: {offset: {type: String}, name: {type: String}},
     default_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
-    default_group_id: {type: mongoose.Schema.Types.ObjectId, ref: 'group', required: true},
+    default_group_id: {type: mongoose.Schema.Types.ObjectId, required: false},
     starting_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
     help_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
     setting_block: {type: mongoose.Schema.Types.ObjectId, ref: 'block', required: false},
@@ -41,7 +46,7 @@ module.exports = function () {
     status: {type: StatusSchema, required: false},
     admins: [{type: mongoose.Schema.Types.ObjectId, ref: 'users', required: false}],
     created_by: {type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true},
-    groups: [{type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false}],
+    groups: [GroupSchema],
     is_valid: {type: Boolean, required: true, default: false},
     history: [mongoose.Schema.Types.Object],
     tags: [String]

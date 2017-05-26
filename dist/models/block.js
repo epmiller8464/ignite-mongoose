@@ -22,7 +22,7 @@ module.exports = function () {
   var BlockSchema = new mongoose.Schema({
     title: { type: String, require: true, maxLength: 80, minLength: 1 },
     bot_id: { type: mongoose.Schema.Types.ObjectId, ref: 'bot', required: true },
-    group_id: { type: mongoose.Schema.Types.ObjectId, ref: 'group', required: false },
+    group_id: { type: mongoose.Schema.Types.ObjectId, required: false },
     builtin: { type: Boolean, required: true, default: false },
     components: [ComponentSchema],
     referral_active: { type: Boolean, required: true, default: false },

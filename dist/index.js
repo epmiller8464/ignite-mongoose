@@ -4,7 +4,7 @@ var models = {
   UserModel: require('./models/user')(),
   BotModel: require('./models/bot')(),
   BlockModel: require('./models/block')(),
-  GroupModel: require('./models/group')(),
+  // GroupModel: require('./models/group')(),
   LogModel: require('./models/log')(),
   EventModel: require('./models/event')(),
   TokenModel: require('./models/token')()
